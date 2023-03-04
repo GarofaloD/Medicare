@@ -2,6 +2,7 @@ package com.garofalo.medicare_simplilearn_backend.configuration;
 
 import com.garofalo.medicare_simplilearn_backend.entity.Product;
 import com.garofalo.medicare_simplilearn_backend.entity.ProductCategory;
+import com.garofalo.medicare_simplilearn_backend.entity.ProductManufacturer;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
@@ -29,6 +30,10 @@ public class DataRestConfiguration implements RepositoryRestConfigurer {
                 //and we make sure we disable for the list of methods.
 //                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsopportedActions))
 //                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsopportedActions));
+
+        config.getExposureConfiguration()
+                .forDomainType(ProductManufacturer.class);
+
 
     }
 }

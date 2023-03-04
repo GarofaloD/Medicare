@@ -17,6 +17,7 @@ public class Product {
     private String sku;
     private String name;
     private String description;
+    private String manufacturer;
     private BigDecimal unitPrice;
     private String imageUrl;
     private boolean active;
@@ -26,11 +27,12 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String sku, String name, String description, BigDecimal unitPrice, String imageUrl, boolean active, int unitsInStock, Date dateCreated, Date lastUpdated, ProductCategory category) {
+    public Product(int id, String sku, String name, String description, String manufacturer, BigDecimal unitPrice, String imageUrl, boolean active, int unitsInStock, Date dateCreated, Date lastUpdated, ProductCategory category) {
         this.id = id;
         this.sku = sku;
         this.name = name;
         this.description = description;
+        this.manufacturer = manufacturer;
         this.unitPrice = unitPrice;
         this.imageUrl = imageUrl;
         this.active = active;
@@ -39,7 +41,6 @@ public class Product {
         this.lastUpdated = lastUpdated;
         this.category = category;
     }
-
 
     //GETTERS & SETTERS
     public int getId() {
@@ -130,7 +131,13 @@ public class Product {
         this.category = category;
     }
 
+    public String getManufacturer() {
+        return manufacturer;
+    }
 
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
     //CUSTOM METHODS
     @CreationTimestamp
@@ -140,8 +147,12 @@ public class Product {
     private Date lastUpdated;
 
     @ManyToOne
-    //rep of the relationship in the db. Remember: Many products can belong to one category
+    //rep of the relationship in the db: Many products can belong to one category
     private ProductCategory category;
+
+    @ManyToOne
+    //rep of the relationship in the db. Many products can be made by a singe manufacturer
+    private ProductManufacturer productManufacturer;
 
 
 }
