@@ -7,6 +7,7 @@ import java.util.Set;
 @Entity
 public class ProductCategory {
 
+    //ADDED COMMENT
     //PROPERTIES
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
