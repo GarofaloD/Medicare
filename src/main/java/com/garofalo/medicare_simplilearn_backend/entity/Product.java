@@ -22,12 +22,22 @@ public class Product {
     private String imageUrl;
     private boolean active;
     private int unitsInStock;
+    @CreationTimestamp
+    private Date dateCreated;
+    @UpdateTimestamp
+    private Date lastUpdated;
+    @ManyToOne
+    //rep of the relationship in the db: Many products can belong to one category
+    private ProductCategory category;
+    @ManyToOne
+    //rep of the relationship in the db. Many products can be made by a singe manufacturer
+    private ProductManufacturer productManufacturer;
 
     //CONSTRUCTORS
     public Product() {
     }
 
-    public Product(int id, String sku, String name, String description, String manufacturer, BigDecimal unitPrice, String imageUrl, boolean active, int unitsInStock, Date dateCreated, Date lastUpdated, ProductCategory category) {
+    public Product(int id, String sku, String name, String description, String manufacturer, BigDecimal unitPrice, String imageUrl, boolean active, int unitsInStock, Date dateCreated, Date lastUpdated, ProductCategory category, ProductManufacturer productManufacturer) {
         this.id = id;
         this.sku = sku;
         this.name = name;
@@ -40,9 +50,11 @@ public class Product {
         this.dateCreated = dateCreated;
         this.lastUpdated = lastUpdated;
         this.category = category;
+        this.productManufacturer = productManufacturer;
     }
 
     //GETTERS & SETTERS
+
     public int getId() {
         return id;
     }
@@ -73,6 +85,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     public BigDecimal getUnitPrice() {
@@ -131,28 +151,11 @@ public class Product {
         this.category = category;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public ProductManufacturer getProductManufacturer() {
+        return productManufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setProductManufacturer(ProductManufacturer productManufacturer) {
+        this.productManufacturer = productManufacturer;
     }
-
-    //CUSTOM METHODS
-    @CreationTimestamp
-    private Date dateCreated;
-
-    @UpdateTimestamp
-    private Date lastUpdated;
-
-    @ManyToOne
-    //rep of the relationship in the db: Many products can belong to one category
-    private ProductCategory category;
-
-    @ManyToOne
-    //rep of the relationship in the db. Many products can be made by a singe manufacturer
-    private ProductManufacturer productManufacturer;
-
-
 }
