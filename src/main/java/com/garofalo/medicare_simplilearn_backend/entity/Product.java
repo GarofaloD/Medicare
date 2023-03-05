@@ -26,11 +26,15 @@ public class Product {
     private Date dateCreated;
     @UpdateTimestamp
     private Date lastUpdated;
-    @ManyToOne
+
     //rep of the relationship in the db: Many products can belong to one category
-    private ProductCategory category;
     @ManyToOne
+ //   @JoinColumn(name="category_id", nullable = false)
+    private ProductCategory category;
+
     //rep of the relationship in the db. Many products can be made by a singe manufacturer
+    @ManyToOne
+   // @JoinColumn(name="manufacturer_id", nullable = false)
     private ProductManufacturer productManufacturer;
 
     //CONSTRUCTORS
