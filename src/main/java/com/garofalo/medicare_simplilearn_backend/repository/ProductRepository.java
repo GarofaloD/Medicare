@@ -16,7 +16,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     //Data Rest will automatically expose the endpoint
     Page<Product> findByCategoryId(@Param("id") int id, Pageable pageable);
 
-    //find items by name. path will be api/products/search/findbyNameContaining?name=XXX
+    //find items by name. path will be api/products/search/findByNameContaining?name=XXX
     //Data Rest will automatically expose the endpoint
     Page<Product> findByNameContaining(@Param("name") String name, Pageable pageable);
 
