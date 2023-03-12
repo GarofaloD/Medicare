@@ -1,23 +1,26 @@
 package com.garofalo.medicare_simplilearn_backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String imageUrl;
     private BigDecimal unitPrice;
     private int quantity;
     private Long productId;
 
-    @ManyToOne  //
-    private Order order;
+    @ManyToOne  //Many items in one order
+    @JoinColumn
+    private SystemOrder systemOrder;
 
 }

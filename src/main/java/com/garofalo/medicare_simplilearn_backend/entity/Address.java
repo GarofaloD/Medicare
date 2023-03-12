@@ -1,15 +1,17 @@
 package com.garofalo.medicare_simplilearn_backend.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String address1;
     private String address2;
     private String city;
@@ -17,7 +19,6 @@ public class Address {
     private int zipCode;
 
     @OneToOne
-    @PrimaryKeyJoinColumn
-    private Order order;
+    private SystemOrder systemOrder;
 
 }

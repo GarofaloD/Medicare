@@ -3,7 +3,7 @@ package com.garofalo.medicare_simplilearn_backend.service;
 import com.garofalo.medicare_simplilearn_backend.dto.Purchase;
 import com.garofalo.medicare_simplilearn_backend.dto.PurchaseResponse;
 import com.garofalo.medicare_simplilearn_backend.entity.Customer;
-import com.garofalo.medicare_simplilearn_backend.entity.Order;
+import com.garofalo.medicare_simplilearn_backend.entity.SystemOrder;
 import com.garofalo.medicare_simplilearn_backend.entity.OrderItem;
 import com.garofalo.medicare_simplilearn_backend.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
@@ -28,24 +28,24 @@ public class CheckoutServiceImpl implements CheckoutService{
     public PurchaseResponse placeOrder(Purchase purchase) {
 
         // get order
-        Order order = purchase.getOrder();
+        SystemOrder systemOrder = purchase.getSystemOrder();
 
         // create tracker
         String orderTracker = getOrderTracker();
-        order.setOrderTracker(orderTracker);
+        systemOrder.setOrderTracker(orderTracker);
 
         // Grab the items that are passed in the purchase object...
         Set<OrderItem> orderItems = purchase.getOrderItems();
         //...and add each of the items to the order
-        orderItems.forEach(item -> order.add(item));
+        orderItems.forEach(item -> systemOrder.add(item));
 
         // get the address in the purchase object and add it to the order
-        order.setAddress(purchase.getShippingAddress());
+        systemOrder.setAddress(purchase.getAddress());
 
         //Create a new customer object based on what's coming from the purchase...
         Customer customer = purchase.getCustomer();
         //...and add this created order to that customer
-        customer.add(order);
+        customer.add(systemOrder);
 
         // then save the customer
         customerRepository.save(customer);

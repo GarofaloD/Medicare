@@ -8,6 +8,6 @@ public class PurchaseResponse {
 
     //used to hold a tracker number
     @NonNull
-    private String orderTrackingNumber;
+    private String orderTracker;
 
 }
