@@ -15,7 +15,7 @@ public class Product {
     //PROPERTIES
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //identity marker
-    private int id;
+    private Long id;
     private String sku;
     private String name;
     private String description;

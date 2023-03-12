@@ -13,7 +13,7 @@ public class ProductCategory {
     //PROPERTIES
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String categoryName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category") //category is in the Product table (foreign key)
