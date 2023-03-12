@@ -19,7 +19,7 @@ public class Address {
     private int zipCode;
 
     @OneToOne
-    @PrimaryKeyJoinColumn
+    @PrimaryKeyJoinColumn //Defaults to the same name as the primary key column of the primary table (systemOrder)
     private SystemOrder systemOrder;
 
 }
