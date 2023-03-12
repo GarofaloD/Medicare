@@ -35,7 +35,7 @@ public class SystemOrder {
     @JoinColumn
     private Customer customer; //many orders can belong to one customer
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "systemOrder")
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Address address;
 
