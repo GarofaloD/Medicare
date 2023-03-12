@@ -19,6 +19,7 @@ public class Address {
     private int zipCode;
 
     @OneToOne
+    @PrimaryKeyJoinColumn
     private SystemOrder systemOrder;
 
 }
