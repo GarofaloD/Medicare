@@ -17,6 +17,7 @@ public class Customer {
     private int id;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer") //one customer can have many orders
