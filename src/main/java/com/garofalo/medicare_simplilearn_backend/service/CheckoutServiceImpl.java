@@ -45,6 +45,16 @@ public class CheckoutServiceImpl implements CheckoutService{
         //Create a new customer object based on what's coming from the purchase...
         Customer customer = purchase.getCustomer();
         //...and add this created order to that customer
+
+        //UPDATE: CHECK EXISTENCE OF CUSTOMERS IN DB TO AVOID DUPLICATES
+        String customerEmail = customer.getEmail();
+        Customer existingCustomer = customerRepository.findByEmail(customerEmail);
+
+        if(existingCustomer != null){
+            customer = existingCustomer;
+        }
+
+
         customer.add(systemOrder);
 
         // then save the customer
