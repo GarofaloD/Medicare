@@ -36,7 +36,7 @@ public class DataRestConfiguration implements RepositoryRestConfigurer {
        RepositoryRestConfigurer.super.configureRepositoryRestConfiguration(config, cors);
 
         //unsopported actions (temporarily)
-        //HttpMethod[] unsopportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE};
+        //HttpMethod[] unsopportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
 
         //disable the methods for product
         config.getExposureConfiguration()
@@ -44,6 +44,7 @@ public class DataRestConfiguration implements RepositoryRestConfigurer {
                 //and we make sure we disable for the list of methods.
 //                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsopportedActions))
 //                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsopportedActions));
+//
 
         //disable the methods for product category
         config.getExposureConfiguration()
