@@ -34,12 +34,12 @@ public class Product {
 
     //rep of the relationship in the db: Many products can belong to one category
     @ManyToOne
- //   @JoinColumn(name="category_id", nullable = false)
+    @JoinColumn(name = "category_id")
     private ProductCategory category;
 
     //rep of the relationship in the db. Many products can be made by a singe manufacturer
     @ManyToOne
-   // @JoinColumn(name="manufacturer_id", nullable = false)
+    @JoinColumn(name = "product_manufacturer_id")
     private ProductManufacturer productManufacturer;
 
 
