@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public interface SystemOrderRepository extends JpaRepository<SystemOrder, Integer> {
 
     //find customer by email
-    Page<SystemOrder> findByCustomerEmail(@Param("email") String email, Pageable pageable);
+    Page<SystemOrder> findByCustomerEmailOrderByDateCreatedDesc(@Param("email") String email, Pageable pageable);
 
 }
